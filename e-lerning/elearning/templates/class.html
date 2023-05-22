@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Classes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    
+    .row.content {height: 1500px}
+    
+
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+   
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+    .button {
+      border: none;
+      color: white;
+      padding: 10px 22px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 10px;
+      margin: 2px 1px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+    
+    .button1 {
+      background-color: white; 
+      color: black; 
+      border: 2px solid #4CAF50;
+    }
+    
+    .button1:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .button2 {
+      background-color: white; 
+      color: black; 
+      border: 2px solid #f60000;
+    }
+    
+    .button2:hover {
+      background-color: #fe0202;
+      color: white;
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Python</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <a href="{% url 'topic_create' %}"><button class="button button1">Add</button></a>
+        <button class="button button2">Delete</button>
+        <br><br>
+        <li class="active"><a href="#section1">indroduction</a></li>
+        <li><a href="#section2">installing python</a></li>
+        <li><a href="#section3">functions</a></li>
+        <li><a href="#section3">modules</a></li>
+      </ul><br>
+     
+    </div>
+
+    <div class="col-sm-9">
+      <h4><small>RECENT POSTS</small></h4>
+      <hr>
+      {% for topic in topics %}
+      <h2>{{topic.name}}</h2>
+      <div class="embed-responsive embed-responsive-16by9">
+       
+        <video width="320" height="240" controls>
+          <source src="{{ topic.file.url}}" type="video/mp4"></video>
+      </div>
+      <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>
+      <br><p>{{topic.description}}
+        </p>
+      
+      
+
+      <br><br>
+      {% endfor %}
+      <h4>Leave a Comment:</h4>
+
+      <label for="username">Name: </label>
+      <input type="text" id="username" name="username">
+      <form role="form">
+        <div class="form-group">
+          <textarea class="form-control" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+      <br><br>
+      
+      <p><span class="badge">2</span> Comments:</p><br>
+      
+      
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <p>QUBO ONLINEV COURCES</p>
+</footer>
+
+</body>
+</html>
